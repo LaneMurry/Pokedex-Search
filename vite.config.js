@@ -9,10 +9,14 @@ const CSP = [
   "script-src 'self'",
   // MUI/Emotion inject styles via <style> tags and inline style attributes
   "style-src 'self' 'unsafe-inline'",
+  // VT323 is self-hosted (public/fonts/), so 'self' is all we need.
+  "font-src 'self'",
   "img-src 'self' data: https://pokeapi.co https://raw.githubusercontent.com",
   "connect-src 'self' https://pokeapi.co",
   "object-src 'none'",
   "base-uri 'self'",
+  // form-action isn't covered by default-src, so lock it down explicitly.
+  "form-action 'self'",
 ].join('; ')
 
 function cspMetaPlugin() {

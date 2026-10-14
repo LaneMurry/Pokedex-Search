@@ -24,7 +24,8 @@ name or national dex ID and it fetches the details from
 - **Accessible** — semantic landmarks, an `aria-live` status region that
   announces results/failures, and labelled controls and images.
 - **Content-Security-Policy** — a strict CSP is injected into production builds
-  at build time, and a Pokédex-red/blue theme ties the UI together.
+  at build time, and a retro pixel Game Boy–style theme (with selectable
+  per-Pokémon-type color themes) ties the UI together.
 
 ## Tech stack
 
@@ -37,8 +38,6 @@ name or national dex ID and it fetches the details from
 | Linting    | ESLint 10 + `eslint-plugin-react-hooks`      |
 
 ## Getting started
-
-Requires **Node.js 20+** (needed by Vite 8).
 
 ```bash
 # install dependencies
@@ -73,13 +72,15 @@ allows the styles Emotion injects, and permits images and API calls only from
 
 ```
 learning-react/
-├─ public/            # static assets (favicon, icons)
+├─ public/              # static assets (favicon, self-hosted VT323 font)
 ├─ src/
-│  ├─ App.jsx         # search form, data fetching, result card
-│  └─ main.jsx        # app entry point + MUI theme
-├─ index.html         # HTML shell (title: Pokémon Explorer)
-├─ vite.config.js     # Vite config + production CSP plugin
-└─ eslint.config.js   # ESLint flat config
+│  ├─ App.jsx           # search form, data fetching, result card
+│  ├─ theme.js          # MUI theme: default Game Boy palette + type themes
+│  ├─ pokemonTypes.js   # type colors/ids + official artwork URLs
+│  └─ main.jsx          # app entry point
+├─ index.html           # HTML shell (title: Pokémon Explorer)
+├─ vite.config.js       # Vite config + production CSP plugin
+└─ eslint.config.js     # ESLint flat config
 ```
 
 ## Notes

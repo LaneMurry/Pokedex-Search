@@ -4,7 +4,39 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#06191f" />
     <title>Pokemon Explorer</title>
+    <!--
+      VT323 is self-hosted (public/fonts/) so the app needs no external font
+      CDN and the production CSP can stay locked to 'self'. Preloaded so the
+      pixel title doesn't flash a fallback face.
+    -->
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href="/fonts/vt323-latin.woff2"
+      crossorigin
+    />
+    <style>
+      @font-face {
+        font-family: 'VT323';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url('/fonts/vt323-latin.woff2') format('woff2');
+      }
+      /*
+        Pre-paint fallback: just the base page color, applied before React
+        mounts so the page never flashes white. The full themed background
+        (default and per-type gradients, halftone dots) is owned by
+        src/theme.js.
+      */
+      html,
+      body {
+        background-color: #06191f;
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>
